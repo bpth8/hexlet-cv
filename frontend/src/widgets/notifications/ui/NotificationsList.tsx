@@ -1,11 +1,15 @@
-import { Stack, Paper, Text } from '@mantine/core'
+import { Stack, Paper, Text, Center, Loader } from '@mantine/core'
 import { EmptyPlaceholder } from '@shared/ui'
 import { IconBellX } from '@tabler/icons-react'
 import { getDaysDiff, getRelativeDayI18nKey } from '@shared/lib'
 import { useTranslation } from 'react-i18next'
-import type { TProps } from '@widgets/notifications/types'
+import type { NotificationDTO } from '../types'
 
-export const NotificationsList: React.FC<TProps> = (props): JSX.Element => {
+interface NotificationsListProps {
+    notifications: NotificationDTO[]
+}
+
+export const NotificationsList: React.FC<NotificationsListProps> = (props): JSX.Element => {
     const { notifications } = props
     const { t } = useTranslation()
 
@@ -15,28 +19,45 @@ export const NotificationsList: React.FC<TProps> = (props): JSX.Element => {
         daysAgo: t('accountPage.notifications.daysAgo'),
     }
 
-    if (!notifications.length) {
-        return (
-            <EmptyPlaceholder
-                title={t('accountPage.notifications.noNotifications')}
-                icon={IconBellX}
-            />
-        )
+    const renderNotifications = () => {
+        if (!notifications) {
+            return (
+                <Center h={200}>
+                    <Loader color="blue" size="lg" />
+                </Center>
+            )
+        }
+        else if (!notifications.length) {
+            return (
+                <EmptyPlaceholder
+                    title={t('accountPage.notifications.noNotifications')}
+                    icon={IconBellX}
+                />
+            )
+        }
+        else {
+            return (
+                <Stack align='stretch' gap='sm'>
+                    {notifications.map(not => {
+                        const daysDifference = getDaysDiff(not.createdAt)
+                        const i18key = getRelativeDayI18nKey(daysDifference)
+                        return (
+                            <Paper key={not.id} radius='lg' withBorder p='md'>
+                                <Text size='lg'>{not.title}</Text>
+                                <Text>{not.description}</Text>
+                                <Text size='sm' pt='xs'>{relativeTimeText[i18key]}</Text>
+                            </Paper>
+                        )
+                    })}
+                </Stack>
+            )
+        }
     }
 
+
     return (
-        <Stack align='stretch' gap='sm'>
-            {notifications.map(not => {
-                const daysDifference = getDaysDiff(not.createdAt)
-                const i18key = getRelativeDayI18nKey(daysDifference)
-                return (
-                    <Paper radius='lg' withBorder p='md'>
-                        <Text size='lg'>{not.title}</Text>
-                        <Text>{not.description}</Text>
-                        <Text size='sm' pt='xs'>{relativeTimeText[i18key]}</Text>
-                    </Paper>
-                )
-            })}
-        </Stack>
+        <>
+            {renderNotifications()}
+        </>
     )
 }

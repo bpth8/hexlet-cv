@@ -1,10 +1,6 @@
-export interface NotificationDTO {
+export type NotificationDTO = {
     id: number
     title: string
     description: string
     createdAt: string
-}
-
-export interface TProps {
-    notifications: NotificationDTO[]
 }

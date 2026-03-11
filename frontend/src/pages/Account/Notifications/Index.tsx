@@ -4,9 +4,20 @@ import { Container, ScrollArea } from '@mantine/core'
 import { IconBell } from '@tabler/icons-react'
 import { NotificationsList } from '@widgets/notifications'
 import { useTranslation } from 'react-i18next'
-import type { TProps } from '@widgets/notifications/types'
+import type { InertiaPage } from '@shared/types/inertia'
 
-const Notifications = ({ notifications }: TProps): JSX.Element => {
+export type NotificationDTO = {
+    id: number
+    title: string
+    description: string
+    createdAt: string
+}
+
+type TProps = {
+  notifications: NotificationDTO[]
+}
+
+const Notifications: InertiaPage<TProps> = ({ notifications }): JSX.Element => {
   const { t } = useTranslation()
 
   return (
