@@ -5,10 +5,23 @@ import { getDaysDiff, getRelativeDayI18nKey } from '@shared/lib'
 import { useTranslation } from 'react-i18next'
 import type { NotificationDTO } from '../types'
 
+/**
+ * Интерфейс пропсов компонента NotificationsList.
+ * 
+ * @property notifications - массив уведомлений пользователя.
+ */
 interface NotificationsListProps {
     notifications?: NotificationDTO[]
 }
 
+/**
+ * Виджет для отображения уведомлений пользователя.
+ * Рендерит список уведомлений с заголовком, описанием и временем создания.
+ * Если данные не пришли - показывает лоадер, если данные равны undefined - показывает плейсхолдер пустого списка.
+ * 
+ * @param props - список уведомлений { notifications: [...] }
+ * @returns React-компонент
+ */
 export const NotificationsList: React.FC<NotificationsListProps> = (props): JSX.Element => {
     const { notifications } = props
     const { t } = useTranslation()

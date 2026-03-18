@@ -6,6 +6,9 @@ import { NotificationsList } from '@widgets/notifications'
 import { useTranslation } from 'react-i18next'
 import type { InertiaPage } from '@shared/types/inertia'
 
+/**
+ * Тип DTO уведомления.
+ */
 export type NotificationDTO = {
     id: number
     title: string
@@ -13,10 +16,20 @@ export type NotificationDTO = {
     createdAt: string
 }
 
+/**
+ * Тип пропсов страницы "Уведомления".
+ */
 type TProps = {
-  notifications: NotificationDTO[]
+  notifications?: NotificationDTO[]
 }
 
+/**
+ * Страница "Уведомления" в личном кабинете пользователя.
+ * Рендерит комопненты PageHeader и NotificationsList.
+ * 
+ * @param props - пропсы страницы, приходящие с бэкенда, в том числе список уведомлений { notifications: [...] }
+ * @returns React-компонент
+ */
 const Notifications: InertiaPage<TProps> = ({ notifications }): JSX.Element => {
   const { t } = useTranslation()
 

@@ -1,3 +1,6 @@
+/**
+ * Тип DTO уведомления.
+ */
 export type NotificationDTO = {
     id: number
     title: string
