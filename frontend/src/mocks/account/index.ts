@@ -1,9 +1,13 @@
 import { http, delay } from 'msw'
 import { inertiaJson } from '@mocks/inertia'
 import type { TMenuItem } from '@shared/types/inertiaSharedData'
-import { purchaseHandlers } from './purchase'
-import { progressHandlers, lessonsHandlers } from '@mocks/account/progress'
-import { notificationsHandlers } from './notifications'
+import { purchaseHandlers } from '@mocks/account/purchase'
+import {
+  progressHandlers,
+  lessonsHandlers,
+} from '@mocks/account/progress/index'
+import { programsHandlers } from '@mocks/account/programs/index'
+import { notificationsHandlers } from '@mocks/account/notifications/index'
 
 export const menu: TMenuItem[] = [
   { label: 'Мое обучение', link: '/account/my-progress' },
@@ -12,7 +16,7 @@ export const menu: TMenuItem[] = [
   { label: 'База знаний' },
   { label: 'Интервью' },
   { label: 'Грейдирование' },
-  { label: 'Программы обучения' },
+  { label: 'Программы обучения', link: '/account/programs' },
   { label: 'Резюме' },
   { label: 'Сопроводительное' },
   { label: 'Автоотклики' },
@@ -70,5 +74,6 @@ export const handlers = [
   ...purchaseHandlers,
   ...progressHandlers,
   ...lessonsHandlers,
+  ...programsHandlers,
   ...notificationsHandlers,
 ]

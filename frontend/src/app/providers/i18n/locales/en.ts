@@ -96,11 +96,14 @@ export default {
       knowledgeBaseAndInterview: {
         title: 'Knowledge base and interviews',
         knowledgeBaseTitle: 'Knowledge Base',
-        knowledgeBaseDescription: 'Step-by-step guides, checklists and templates for job search.',
+        knowledgeBaseDescription:
+          'Step-by-step guides, checklists and templates for job search.',
         interviewQuestionsTitle: 'Interview questions',
-        interviewQuestionsDescription: 'Collection of real questions and answers about roles and stack.',
+        interviewQuestionsDescription:
+          'Collection of real questions and answers about roles and stack.',
         realInterviewVideosTitle: 'Real interviews videos',
-        realInterviewVideosDescription: 'Interviews analysis with expert comments and checklists.',
+        realInterviewVideosDescription:
+          'Interviews analysis with expert comments and checklists.',
         button: 'Get access',
       },
       webinars: {
@@ -114,8 +117,9 @@ export default {
       totaAi: {
         aiAssistant: 'AI Assistant',
         title: 'Tota AI — Career Accelerator Agent',
-        description: 'Helps with resumes, applications, correspondence with recruiters, and interview preparation.',
-      }, 
+        description:
+          'Helps with resumes, applications, correspondence with recruiters, and interview preparation.',
+      },
     },
     accountPage: {
       purchases: {
@@ -150,15 +154,20 @@ export default {
         courseBadge: {
           newProgram: 'New',
           completedProgram: 'Сertificate',
-        }
+        },
+      },
+      studyPrograms: {
+        title: 'Study programs',
+        noPrograms: 'You have no any active study programs yet',
+        incorrectData: 'Study programs loading error',
       },
       notifications: {
         title: 'Notifications',
         today: 'today',
         yesterday: 'yesterday',
         daysAgo: 'long ago',
-        noNotifications: 'No notifications'
-      }
+        noNotifications: 'No notifications',
+      },
     },
     activityCards: {
       courses_in_process: 'Courses in Progress',
