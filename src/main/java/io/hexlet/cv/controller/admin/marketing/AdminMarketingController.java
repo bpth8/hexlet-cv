@@ -1,16 +1,7 @@
 package io.hexlet.cv.controller.admin.marketing;
 
 import io.github.inertia4j.spring.Inertia;
-import io.hexlet.cv.dto.marketing.ArticleCreateDto;
-import io.hexlet.cv.dto.marketing.ArticleUpdateDto;
-import io.hexlet.cv.dto.marketing.PricingCreateDto;
-import io.hexlet.cv.dto.marketing.PricingUpdateDto;
-import io.hexlet.cv.dto.marketing.ReviewCreateDto;
-import io.hexlet.cv.dto.marketing.ReviewUpdateDto;
-import io.hexlet.cv.dto.marketing.StoryCreateDto;
-import io.hexlet.cv.dto.marketing.StoryUpdateDto;
-import io.hexlet.cv.dto.marketing.TeamCreateDto;
-import io.hexlet.cv.dto.marketing.TeamUpdateDto;
+import io.hexlet.cv.dto.marketing.*;
 import io.hexlet.cv.handler.exception.ResourceNotFoundException;
 import io.hexlet.cv.service.ArticleService;
 import io.hexlet.cv.service.EnumService;
@@ -328,10 +319,10 @@ public class AdminMarketingController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Void> updateDisplayOrder(@PathVariable String section,
                                                    @PathVariable Long id,
-                                                   @RequestBody Map<String, Integer> request) {
+                                                   @Valid @RequestBody DisplayOrderRequest request) {
         log.debug("[MARKETING] Updating display order for {} id: {}", section, id);
 
-        Integer displayOrder = request.get("display_order");
+        Integer displayOrder = request.getDisplayOrder();
 
         switch (section) {
             case "articles" -> articleService.updateArticleDisplayOrder(id, displayOrder);

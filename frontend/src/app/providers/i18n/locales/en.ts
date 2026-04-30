@@ -260,6 +260,13 @@ export default {
           offline: 'Offline',
         },
       },
+      knowledgeBase: {
+        title: 'Knowledge base',
+        openJournalButton: 'Open journal',
+        readButton: 'Read',
+        baseIsEmpty: 'The knowledge base is empty',
+        modalTitle: 'Journal',
+      },
     },
     activityCards: {
       courses_in_process: 'Courses in Progress',
