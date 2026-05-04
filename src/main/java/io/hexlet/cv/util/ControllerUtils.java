@@ -1,11 +1,7 @@
 package io.hexlet.cv.util;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import io.hexlet.cv.dto.account.MenuItemDTO;
-import io.hexlet.cv.service.AccountMenuService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -22,8 +18,6 @@ public class ControllerUtils {
     public static final String ACTIVE_SUB_SECTION = "activeSubSection";
     public static final String MAIN_SECTION_MARKETING = "marketing";
     public static final String MAIN_SECTION_ACCOUNT = "account";
-
-    private final AccountMenuService accountMenuService;
 
     public Map<String, Object> createBaseProps(String mainSection, String subSection) {
         return Map.of(
@@ -43,12 +37,7 @@ public class ControllerUtils {
     }
 
     public Map<String, Object> createAccountProps(String subSection) {
-        List<MenuItemDTO> menu = accountMenuService.getMenu();
-        Map<String, Object> props = new HashMap<>();
-        props.put(ACTIVE_MAIN_SECTION, MAIN_SECTION_ACCOUNT);
-        props.put(ACTIVE_SUB_SECTION, subSection);
-        props.put("menu", menu);
-        return props;
+        return createBaseProps(MAIN_SECTION_ACCOUNT, subSection);
     }
 
     public Map<String, Object> createPaginationMap(Page<?> page, Pageable pageable) {

@@ -9,20 +9,20 @@ import java.util.List;
 public class AccountMenuService {
     public List<MenuItemDTO> getMenu() {
         return List.of(
-                new MenuItemDTO("Мое обучение", "/account/my-progress"),
-                new MenuItemDTO("Покупки и подписки", "/account/purchase"),
-                new MenuItemDTO("Вебинары", "/account/webinars"),
-                new MenuItemDTO("База знаний", "/account/knowledge"),
-                new MenuItemDTO("Интервью", null),
-                new MenuItemDTO("Грейдирование", null),
-                new MenuItemDTO("Программы обучения", "/account/programs"),
-                new MenuItemDTO("Резюме", null),
-                new MenuItemDTO("Сопроводительное", null),
-                new MenuItemDTO("Автоотклики", null),
-                new MenuItemDTO("Избранное", null),
-                new MenuItemDTO("Уведомления", "/account/notifications"),
-                new MenuItemDTO("Поддержка", null),
-                new MenuItemDTO("Настройки", null)
+                new MenuItemDTO("Мое обучение", "/account/my-progress", "myProgress"),
+                new MenuItemDTO("Покупки и подписки", "/account/purchase", "purchase"),
+                new MenuItemDTO("Вебинары", "/account/webinars", "webinars"),
+                new MenuItemDTO("База знаний", "/account/knowledge", "knowledge"),
+                new MenuItemDTO("Интервью", "/account/knowledge/interviews", "knowledgeInterviews"),
+                new MenuItemDTO("Грейдирование", null, null),
+                new MenuItemDTO("Программы обучения", "/account/programs", "programs"),
+                new MenuItemDTO("Резюме", null, null),
+                new MenuItemDTO("Сопроводительное", null, null),
+                new MenuItemDTO("Автоотклики", null, null),
+                new MenuItemDTO("Избранное", null, null),
+                new MenuItemDTO("Уведомления", "/account/notifications", "notifications"),
+                new MenuItemDTO("Поддержка", null, null),
+                new MenuItemDTO("Настройки", null, null)
         );
     }
 }
