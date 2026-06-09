@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +39,7 @@ public class LearningProgressController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Object getProgress(@PageableDefault(size = 10) Pageable pageable) {
+    public ResponseEntity<?> getProgress(@PageableDefault(size = 10) Pageable pageable) {
         log.debug("Get progress request");
         var user = userUtils.getCurrentUser();
 
@@ -58,7 +59,7 @@ public class LearningProgressController {
 
     @GetMapping("/program/{programProgressId}/lessons")
     @ResponseStatus(HttpStatus.OK)
-    public Object getLessonProgress(@PathVariable Long programProgressId,
+    public ResponseEntity<?> getLessonProgress(@PathVariable Long programProgressId,
                                     @PageableDefault(size = 10) Pageable pageable) {
         var user = userUtils.getCurrentUser();
         log.debug("[CONTROLLER] Getting lessons for programProgressId: {}, user: {}, pageable: {}",
@@ -79,7 +80,7 @@ public class LearningProgressController {
     }
 
     @PostMapping("/program/start")
-    public Object startProgram(@RequestParam Long programId) {
+    public ResponseEntity<?> startProgram(@RequestParam Long programId) {
         var user = userUtils.getCurrentUser();
         log.debug("[CONTROLLER] Program start {} by user {}", programId, user.getEmail());
 
@@ -88,7 +89,7 @@ public class LearningProgressController {
     }
 
     @PostMapping("/lesson/start")
-    public Object startLesson(@RequestParam Long programProgressId,
+    public ResponseEntity<?> startLesson(@RequestParam Long programProgressId,
                               @RequestParam Long lessonId) {
 
         var user = userUtils.getCurrentUser();
@@ -101,20 +102,20 @@ public class LearningProgressController {
     }
 
     @PostMapping("/lesson/{lessonProgressId}/complete")
-    public Object completeLesson(@PathVariable Long lessonProgressId,
+    public ResponseEntity<?> completeLesson(@PathVariable Long lessonProgressId,
                                  @RequestParam Long programProgressId) {
         userLessonProgressService.completeLesson(lessonProgressId);
         return inertia.redirect("/account/my-progress/program/" + programProgressId + "/lessons");
     }
 
     @PostMapping("/program/{programProgressId}/complete")
-    public Object completeProgram(@PathVariable Long programProgressId) {
+    public ResponseEntity<?> completeProgram(@PathVariable Long programProgressId) {
         userProgramProgressService.completeProgram(programProgressId);
         return inertia.redirect("/account/my-progress");
     }
 
     @GetMapping("/")
-    public Object defaultSection() {
+    public ResponseEntity<?> defaultSection() {
         log.debug("[CONTROLLER] GET /account/my-progress/ - Redirect to the main page");
         return inertia.redirect("/account/my-progress");
     }

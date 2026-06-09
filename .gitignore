@@ -60,3 +60,13 @@ build
 .settings
 .class
 .PVS-Studio/
+
+# IDE
+.vscode/
+.specstory/
+
+# Configs
+config.json
+
+# Docs
+docs/*review*.md
