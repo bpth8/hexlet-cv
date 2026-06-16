@@ -868,7 +868,7 @@ public class AdminMarketingControllerTest {
                 "articles,0"
         })
         void shouldUpdateDisplayOrderAndReturn200(String section, int order) throws Exception {
-            var body = Map.of("display_order", order);
+            var body = Map.of("displayOrder", order);
 
             mockMvc.perform(put("/admin/marketing/" + section + "/1/display-order")
                             .contentType(MediaType.APPLICATION_JSON)
@@ -881,7 +881,7 @@ public class AdminMarketingControllerTest {
 
         @Test
         void shouldRejectNegativeDisplayOrder() throws Exception {
-            var body = Map.of("display_order", -1);
+            var body = Map.of("displayOrder", -1);
 
             mockMvc.perform(put("/admin/marketing/articles/1/display-order")
                             .contentType(MediaType.APPLICATION_JSON)
@@ -973,7 +973,7 @@ public class AdminMarketingControllerTest {
 
         @Test
         void shouldReturn404ForUnknownDisplayOrderSection() throws Exception {
-            var body = Map.of("display_order", 1);
+            var body = Map.of("displayOrder", 1);
 
             mockMvc.perform(put("/admin/marketing/unknown/1/display-order")
                             .contentType(MediaType.APPLICATION_JSON)
