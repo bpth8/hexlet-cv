@@ -2,6 +2,7 @@ package io.hexlet.cv.controller.admin.marketing;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.inertia4j.spring.Inertia;
+import io.hexlet.cv.component.DataInitializer;
 import io.hexlet.cv.dto.marketing.*;
 import io.hexlet.cv.model.enums.TeamMemberType;
 import io.hexlet.cv.model.enums.TeamPosition;
@@ -71,6 +72,9 @@ public class AdminMarketingControllerTest {
 
     @MockitoBean
     private PricingPlanService pricingPlanService;
+
+    @MockitoBean
+    private DataInitializer dataInitializer;
 
     // ─── helpers ────────────────────────────────────────────────────────────
     private static final String ADMIN = "admin";
