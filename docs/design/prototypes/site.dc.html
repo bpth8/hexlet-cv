@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#FFFFFF;}
+*{box-sizing:border-box;}
+@keyframes hxBlink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+</style>
+</helmet>
+
+<sc-if value="{{ showPromo }}" hint-placeholder-val="{{ true }}">
+<div onClick="{{ openSignup }}" style="background:#116EF5;color:#FFFFFF;text-align:center;padding:9px 20px;font:600 12.5px Manrope,system-ui,sans-serif;cursor:pointer;">
+  Выпускникам Хекслета 2026 года тариф «Про» — бесплатно на 6 месяцев →
+</div>
+</sc-if>
+
+<div style="position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid #E6E8EC;font-family:Manrope,system-ui,sans-serif;">
+  <div style="max-width:1120px;margin:0 auto;padding:0 24px;height:62px;display:flex;align-items:center;gap:28px;">
+    <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+      <div style="width:32px;height:32px;border-radius:8px;background:#116EF5;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:#FFFFFF;letter-spacing:-1px;">&gt;_</div>
+      <div style="display:flex;flex-direction:column;gap:0px;">
+        <span style="font-size:14.5px;font-weight:800;color:#17171E;letter-spacing:-0.2px;line-height:1.1;">Хекслет</span>
+        <span style="font-size:9px;font-weight:700;color:#116EF5;letter-spacing:1.4px;text-transform:uppercase;line-height:1.2;">Карьера</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:22px;flex:1;">
+      <span onClick="{{ goFeatures }}" style="font-size:13.5px;font-weight:600;color:#3E434D;cursor:pointer;" style-hover="color:#116EF5;">Возможности</span>
+      <span onClick="{{ goHow }}" style="font-size:13.5px;font-weight:600;color:#3E434D;cursor:pointer;" style-hover="color:#116EF5;">Как это работает</span>
+      <span onClick="{{ goPricing }}" style="font-size:13.5px;font-weight:600;color:#3E434D;cursor:pointer;" style-hover="color:#116EF5;">Тарифы</span>
+      <span onClick="{{ goBlog }}" style="font-size:13.5px;font-weight:600;color:#3E434D;cursor:pointer;" style-hover="color:#116EF5;">Блог</span>
+    </div>
+    <span onClick="{{ openLogin }}" style="font-size:13.5px;font-weight:700;color:#3E434D;padding:8px 6px;cursor:pointer;" style-hover="color:#116EF5;">Войти</span>
+    <span onClick="{{ openSignup }}" style="display:flex;align-items:center;height:36px;padding:0 16px;border-radius:8px;background:#116EF5;color:#FFFFFF;font-size:13.5px;font-weight:700;cursor:pointer;" style-hover="background:#0B5CD6;">Начать бесплатно</span>
+  </div>
+</div>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Главная" style="font-family:Manrope,system-ui,sans-serif;color:#17171E;">
+
+  <div style="max-width:1120px;margin:0 auto;padding:72px 24px 64px 24px;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:5px 13px;border-radius:99px;background:#EAF2FE;margin-bottom:20px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:#116EF5;"></span>
+        <span style="font-size:12px;font-weight:700;color:#0B5CD6;">Сервис Хекслета для поиска работы в IT</span>
+      </div>
+      <h1 style="margin:0 0 18px 0;font-size:46px;line-height:1.12;font-weight:800;letter-spacing:-1.2px;">От отклика<br>до оффера —<br>в одном сервисе</h1>
+      <p style="margin:0 0 28px 0;font-size:16.5px;line-height:1.6;color:#4A4F59;max-width:440px;">Вакансии с трёх площадок, резюме с AI-ревью, письма, трекер откликов и тренировочные собеседования, где код проверяется реальными тестами.</p>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <span onClick="{{ openSignup }}" style="display:flex;align-items:center;height:46px;padding:0 24px;border-radius:9px;background:#116EF5;color:#FFFFFF;font-size:15px;font-weight:700;cursor:pointer;" style-hover="background:#0B5CD6;">Начать бесплатно</span>
+        <a href="Хекслет Карьера.dc.html" style="text-decoration:none;display:flex;align-items:center;height:46px;padding:0 24px;border-radius:9px;border:1px solid #D5D9E0;color:#17171E;font-size:15px;font-weight:700;background:#FFFFFF;" style-hover="background:#F4F5F7;">Смотреть демо</a>
+      </div>
+      <div style="margin-top:18px;font-size:12.5px;color:#6A6F7A;">Бесплатно для студентов Хекслета · без карты</div>
+    </div>
+
+    <div style="position:relative;height:420px;">
+      <div style="position:absolute;left:0;top:26px;width:78%;background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;box-shadow:0 18px 44px rgba(23,23,30,.10);overflow:hidden;">
+        <div style="display:flex;align-items:center;gap:6px;padding:11px 14px;border-bottom:1px solid #F0F1F4;">
+          <span style="width:9px;height:9px;border-radius:50%;background:#E6E8EC;"></span>
+          <span style="width:9px;height:9px;border-radius:50%;background:#E6E8EC;"></span>
+          <span style="width:9px;height:9px;border-radius:50%;background:#E6E8EC;"></span>
+          <span style="margin-left:8px;font-size:11px;font-weight:700;color:#9AA0AB;">Отклики · доска</span>
+        </div>
+        <div style="display:flex;gap:10px;padding:14px;">
+          <div style="flex:1;background:#F4F5F7;border-radius:9px;padding:8px;">
+            <div style="font-size:10.5px;font-weight:800;color:#6A6F7A;padding:2px 4px 7px 4px;">ОТКЛИК · 4</div>
+            <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:7px;padding:8px 9px;margin-bottom:7px;">
+              <div style="font-size:11px;font-weight:700;">Ozon Tech</div>
+              <div style="font-size:9.5px;color:#9AA0AB;margin-top:2px;">резюме v3 · 2 дня</div>
+            </div>
+            <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:7px;padding:8px 9px;">
+              <div style="font-size:11px;font-weight:700;">Авито</div>
+              <div style="font-size:9.5px;color:#9AA0AB;margin-top:2px;">+ реферал · сегодня</div>
+            </div>
+          </div>
+          <div style="flex:1;background:#F4F5F7;border-radius:9px;padding:8px;">
+            <div style="font-size:10.5px;font-weight:800;color:#6A6F7A;padding:2px 4px 7px 4px;">СОБЕС · 2</div>
+            <div style="background:#FFFFFF;border:1.5px solid #116EF5;border-radius:7px;padding:8px 9px;">
+              <div style="font-size:11px;font-weight:700;">Т-Банк</div>
+              <div style="font-size:9.5px;color:#0B5CD6;font-weight:700;margin-top:2px;">завтра 11:00</div>
+            </div>
+          </div>
+          <div style="flex:1;background:#E9F8EE;border-radius:9px;padding:8px;">
+            <div style="font-size:10.5px;font-weight:800;color:#2B8A3E;padding:2px 4px 7px 4px;">ОФФЕР · 1</div>
+            <div style="background:#FFFFFF;border:1.5px solid #2F9E44;border-radius:7px;padding:8px 9px;">
+              <div style="font-size:11px;font-weight:700;">Эвотор</div>
+              <div style="font-size:9.5px;color:#2B8A3E;font-weight:700;margin-top:2px;">155 000 ₽</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:absolute;right:0;top:0;background:#FFFFFF;border:1px solid #E6E8EC;border-radius:12px;box-shadow:0 12px 30px rgba(23,23,30,.10);padding:13px 16px;display:flex;align-items:center;gap:11px;">
+        <svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="#EDEFF3" stroke-width="4.5"></circle><circle cx="22" cy="22" r="18" fill="none" stroke="#2F9E44" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="104 113" transform="rotate(-90 22 22)"></circle><text x="22" y="26" text-anchor="middle" font-size="12.5" font-weight="700" fill="#17171E" font-family="Manrope">92</text></svg>
+        <div>
+          <div style="font-size:12px;font-weight:800;">Матч с вакансией</div>
+          <div style="font-size:10.5px;color:#6A6F7A;margin-top:1px;">Авито · Junior Frontend</div>
+        </div>
+      </div>
+
+      <div style="position:absolute;right:22px;bottom:44px;background:#17171E;border-radius:12px;box-shadow:0 14px 34px rgba(23,23,30,.28);padding:14px 16px;width:250px;">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:9px;">
+          <span style="font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:5px;background:rgba(103,65,217,.5);color:#C5B3F5;">AI-СОБЕС</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#8B909E;">solution.js</span>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.6;color:#E8EAF0;">
+          <span style="color:#C678DD;">const</span> seen = <span style="color:#C678DD;">new</span> <span style="color:#61AFEF;">Set</span>();
+        </div>
+        <div style="margin-top:9px;display:flex;align-items:center;gap:7px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#37B24D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+          <span style="font-size:11px;font-weight:700;color:#69DB7C;">Тесты: 6 из 6 · O(n)</span>
+        </div>
+      </div>
+
+      <div style="position:absolute;left:34px;bottom:0;background:#FFFFFF;border:1px solid #E6E8EC;border-radius:12px;box-shadow:0 12px 30px rgba(23,23,30,.10);padding:12px 15px;display:flex;align-items:center;gap:9px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2F9E44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+        <span style="font-size:12px;font-weight:700;">Резюме прошло ATS-проверку</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="hx-features" style="background:#F4F5F7;border-top:1px solid #E6E8EC;border-bottom:1px solid #E6E8EC;">
+    <div style="max-width:1120px;margin:0 auto;padding:64px 24px;">
+      <div style="max-width:520px;margin-bottom:36px;">
+        <h2 style="margin:0 0 10px 0;font-size:30px;font-weight:800;letter-spacing:-0.7px;">Всё, что между «ищу работу» и «вышел на работу»</h2>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:#4A4F59;">Один контекст на все шаги: вакансия знает про ваше резюме, письмо — про вакансию, тренировка — про завтрашний собес.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+        <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:24px 26px;">
+          <div style="width:38px;height:38px;border-radius:10px;background:#EAF2FE;display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#116EF5" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7" width="17" height="13" rx="2"></rect><path d="M8.5 7V5.5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2V7"></path><path d="M3.5 12.5h17"></path></svg></div>
+          <div style="font-size:16.5px;font-weight:800;margin-bottom:7px;">Вакансии с матчем под профиль</div>
+          <div style="font-size:13.5px;line-height:1.6;color:#4A4F59;">Парсер собирает вакансии с hh.ru, Хабр Карьеры, Getmatch, из Telegram-каналов, с фриланс-бирж и мировых площадок (LinkedIn, RemoteOK), вычищает «джунов с опытом 3 года» и показывает процент соответствия вашему стеку.</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:24px 26px;">
+          <div style="width:38px;height:38px;border-radius:10px;background:#EAF2FE;display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#116EF5" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5z"></path><path d="M14 3.5V8.5h5"></path><path d="M9 13h6"></path><path d="M9 16.5h4"></path></svg></div>
+          <div style="font-size:16.5px;font-weight:800;margin-bottom:7px;">Резюме и письма, которые проходят фильтры</div>
+          <div style="font-size:13.5px;line-height:1.6;color:#4A4F59;">AI-ревью по чек-листу рекрутёров, подгонка ключевых слов под ATS конкретной вакансии и весь пакет писем — от сопроводительного до торга по офферу.</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:24px 26px;">
+          <div style="width:38px;height:38px;border-radius:10px;background:#EAF2FE;display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#116EF5" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="5" height="17" rx="1.4"></rect><rect x="9.8" y="3.5" width="5" height="11" rx="1.4"></rect><rect x="16" y="3.5" width="5" height="7" rx="1.4"></rect></svg></div>
+          <div style="font-size:16.5px;font-weight:800;margin-bottom:7px;">Трекер, который помнит всё</div>
+          <div style="font-size:13.5px;line-height:1.6;color:#4A4F59;">Канбан-воронка откликов: какое резюме куда ушло, когда пора напомнить о себе и где воронка проседает — с бенчмарками других выпускников.</div>
+        </div>
+        <div style="background:#17171E;border-radius:14px;padding:24px 26px;color:#FFFFFF;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+            <div style="width:38px;height:38px;border-radius:10px;background:rgba(103,65,217,.4);display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C5B3F5" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.2-.6L3 21l1.8-4.3a8.4 8.4 0 1 1 16.2-5.2z"></path></svg></div>
+            <span style="font-size:10px;font-weight:800;padding:3px 8px;border-radius:99px;background:rgba(103,65,217,.45);color:#C5B3F5;letter-spacing:.6px;">НАШЕ ОТЛИЧИЕ</span>
+          </div>
+          <div style="font-size:16.5px;font-weight:800;margin-bottom:7px;">AI-собес, который не льстит</div>
+          <div style="font-size:13.5px;line-height:1.6;color:#9AA2B4;">Обычные тренажёры хвалят уверенную подачу и пропускают неверный код. У нас решение прогоняется через реальные автотесты в IDE Хекслета — оценка честная: и подача, и корректность.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hx-eco" style="max-width:1120px;margin:0 auto;padding:64px 24px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div>
+        <h2 style="margin:0 0 14px 0;font-size:30px;font-weight:800;letter-spacing:-0.7px;">Встроено в экосистему Хекслета</h2>
+        <p style="margin:0 0 22px 0;font-size:14.5px;line-height:1.65;color:#4A4F59;max-width:440px;">Карьера — не отдельный тул, а продолжение учёбы. Навыки в резюме подтверждаются реальными упражнениями, а не словами.</p>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="width:26px;height:26px;border-radius:8px;background:#EAF2FE;color:#0B5CD6;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex:none;">1</div>
+            <div style="font-size:13.5px;line-height:1.55;color:#2A2C33;"><b>Проекты и упражнения → резюме.</b> Портфолио собирается из выполненных проектов с код-ревью, GitHub подключается в один клик.</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="width:26px;height:26px;border-radius:8px;background:#EAF2FE;color:#0B5CD6;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex:none;">2</div>
+            <div style="font-size:13.5px;line-height:1.55;color:#2A2C33;"><b>База реальных собеседований.</b> 2 400 вопросов и 180 тестовых заданий, которые выпускники приносили с настоящих интервью.</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="width:26px;height:26px;border-radius:8px;background:#EAF2FE;color:#0B5CD6;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex:none;">3</div>
+            <div style="font-size:13.5px;line-height:1.55;color:#2A2C33;"><b>Слабое место → курс.</b> Провалили алгоритмы на тренировке — получаете не «старайтесь лучше», а конкретный урок из каталога Хекслета.</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="width:26px;height:26px;border-radius:8px;background:#EAF2FE;color:#0B5CD6;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex:none;">4</div>
+            <div style="font-size:13.5px;line-height:1.55;color:#2A2C33;"><b>Коммерческие проекты → строка опыта.</b> В Хекслете студенты делают реальные заказные продукты в командах — со спринтами, тимлидом и код-ревью. Это попадает в резюме как опыт работы и в публичный профиль как кейс.</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#F4F5F7;border:1px solid #E6E8EC;border-radius:16px;padding:26px 28px;">
+        <div style="font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#6A6F7A;margin-bottom:16px;">Честная оценка после тренировки</div>
+        <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:12px;padding:16px 18px;margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <span style="font-size:13px;font-weight:700;">Подача ответа</span>
+            <span style="font-size:12px;font-weight:800;color:#2F9E44;">уверенно ✓</span>
+          </div>
+          <div style="font-size:12px;line-height:1.5;color:#6A6F7A;">Структурировано, темп 132 слова в минуту</div>
+        </div>
+        <div style="background:#FFFFFF;border:1.5px solid #E8590C;border-radius:12px;padding:16px 18px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <span style="font-size:13px;font-weight:700;">Корректность решения</span>
+            <span style="font-size:12px;font-weight:800;color:#E8590C;">тесты: 4 из 6</span>
+          </div>
+          <div style="font-size:12px;line-height:1.5;color:#6A6F7A;">Другой тренажёр похвалил бы. Наш запустил тесты: O(n²) не пройдёт нагрузку — вот разбор с Set за O(n)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hx-commercial" style="max-width:1120px;margin:0 auto;padding:0 24px 64px 24px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:5px 13px;border-radius:99px;background:#E9F8EE;margin-bottom:16px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#2F9E44;"></span>
+          <span style="font-size:12px;font-weight:700;color:#2B8A3E;">Опыт работы — до оффера</span>
+        </div>
+        <h2 style="margin:0 0 14px 0;font-size:30px;font-weight:800;letter-spacing:-0.7px;">Коммерческие проекты Хекслета</h2>
+        <p style="margin:0 0 20px 0;font-size:14.5px;line-height:1.65;color:#4A4F59;max-width:440px;">Команды по шесть студентов делают заказные продукты для реальных компаний: спринты, код-ревью тимлида из индустрии, демо заказчику и релиз. Через три месяца в резюме — опыт, о котором есть что рассказать на собеседовании.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="width:26px;height:26px;border-radius:8px;background:#E9F8EE;color:#2B8A3E;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex:none;">1</div>
+            <div style="font-size:13.5px;line-height:1.55;color:#2A2C33;"><b>Заявка и мини-собес с тимлидом.</b> Онбординг за неделю: доступно студентам от середины профессии</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="width:26px;height:26px;border-radius:8px;background:#E9F8EE;color:#2B8A3E;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex:none;">2</div>
+            <div style="font-size:13.5px;line-height:1.55;color:#2A2C33;"><b>Работа как в компании.</b> Спринты по две недели, стендапы, код-ревью и демо заказчику</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="width:26px;height:26px;border-radius:8px;background:#E9F8EE;color:#2B8A3E;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex:none;">3</div>
+            <div style="font-size:13.5px;line-height:1.55;color:#2A2C33;"><b>Результат в карьере.</b> Строка опыта в резюме, кейс в публичном профиле и референс тимлида</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+          <span onClick="{{ openSignup }}" style="display:flex;align-items:center;height:44px;padding:0 22px;border-radius:9px;background:#116EF5;color:#FFFFFF;font-size:14.5px;font-weight:700;cursor:pointer;" style-hover="background:#0B5CD6;">Подать заявку</span>
+          <a href="Хекслет Карьера.dc.html" style="text-decoration:none;display:flex;align-items:center;height:44px;padding:0 22px;border-radius:9px;border:1px solid #D5D9E0;color:#17171E;font-size:14.5px;font-weight:700;background:#FFFFFF;" style-hover="background:#F4F5F7;">Открытые наборы</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:20px 24px;box-shadow:0 12px 30px rgba(23,23,30,.06);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:11px;font-weight:800;padding:3px 9px;border-radius:99px;background:#E9F8EE;color:#2B8A3E;text-transform:uppercase;letter-spacing:.4px;">запущен</span>
+            <span style="font-size:12px;color:#9AA0AB;">кейс выпуска 2026</span>
+          </div>
+          <div style="font-size:16px;font-weight:800;margin-bottom:5px;">Сервис предзаказа для сети пекарен «Мука»</div>
+          <div style="font-size:13px;line-height:1.6;color:#4A4F59;margin-bottom:10px;">2 000 заказов в месяц · команда из 6 студентов + тимлид из Авито · 3 месяца</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span style="padding:2px 9px;border-radius:6px;background:#F1F3F7;font-size:11.5px;font-weight:600;color:#3E434D;">React</span>
+            <span style="padding:2px 9px;border-radius:6px;background:#F1F3F7;font-size:11.5px;font-weight:600;color:#3E434D;">TypeScript</span>
+            <span style="padding:2px 9px;border-radius:6px;background:#F1F3F7;font-size:11.5px;font-weight:600;color:#3E434D;">REST</span>
+          </div>
+        </div>
+        <div style="background:#17171E;border-radius:14px;padding:20px 24px;color:#FFFFFF;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:11px;font-weight:800;padding:3px 9px;border-radius:99px;background:rgba(240,140,0,.35);color:#FFC078;text-transform:uppercase;letter-spacing:.4px;">набор открыт</span>
+            <span style="font-size:12px;color:#8B909E;">заявки до 15 июля</span>
+          </div>
+          <div style="font-size:16px;font-weight:800;margin-bottom:5px;">Сервис записи для сети клиник</div>
+          <div style="font-size:13px;line-height:1.6;color:#9AA2B4;margin-bottom:12px;">2 слота Frontend · старт 21 июля · тимлид — сеньор из Контура</div>
+          <span onClick="{{ openSignup }}" style="display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:8px;background:#116EF5;color:#FFFFFF;font-size:13px;font-weight:700;cursor:pointer;" style-hover="background:#0B5CD6;">Подать заявку</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hx-how" style="background:#F4F5F7;border-top:1px solid #E6E8EC;border-bottom:1px solid #E6E8EC;">
+    <div style="max-width:1120px;margin:0 auto;padding:64px 24px;">
+      <div style="max-width:520px;margin-bottom:36px;">
+        <h2 style="margin:0 0 10px 0;font-size:30px;font-weight:800;letter-spacing:-0.7px;">Как это работает</h2>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:#4A4F59;">Четыре шага — и поиск превращается из хаоса в управляемый процесс.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+        <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:22px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:#116EF5;margin-bottom:12px;">01</div>
+          <div style="font-size:15px;font-weight:800;margin-bottom:7px;">Соберите резюме</div>
+          <div style="font-size:13px;line-height:1.6;color:#4A4F59;">Импорт с hh.ru или из профиля Хекслета. AI-ревью сразу показывает, что чинить, — на русском и английском.</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:22px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:#116EF5;margin-bottom:12px;">02</div>
+          <div style="font-size:15px;font-weight:800;margin-bottom:7px;">Подключите источники</div>
+          <div style="font-size:13px;line-height:1.6;color:#4A4F59;">Площадки, Telegram-каналы, фриланс-биржи и мировые сайты — вакансии сами складываются в ленту с процентом матча.</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:22px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:#116EF5;margin-bottom:12px;">03</div>
+          <div style="font-size:15px;font-weight:800;margin-bottom:7px;">Откликайтесь пакетом</div>
+          <div style="font-size:13px;line-height:1.6;color:#4A4F59;">К каждому отклику — адаптированное резюме и письмо. Всё уходит в трекер: этапы, напоминания, фоллоу-апы.</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:22px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:#116EF5;margin-bottom:12px;">04</div>
+          <div style="font-size:15px;font-weight:800;margin-bottom:7px;">Готовьтесь и торгуйтесь</div>
+          <div style="font-size:13px;line-height:1.6;color:#4A4F59;">AI-собес с реальными тестами перед каждым интервью — и заготовка для торга, когда придёт оффер.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hx-pricing" style="max-width:1120px;margin:0 auto;padding:64px 24px;">
+    <div style="max-width:520px;margin-bottom:36px;">
+      <h2 style="margin:0 0 10px 0;font-size:30px;font-weight:800;letter-spacing:-0.7px;">Тарифы</h2>
+      <p style="margin:0;font-size:14.5px;line-height:1.6;color:#4A4F59;">Начните бесплатно. «Про» нужен, когда поиск становится активным.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch;">
+      <div style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:16px;padding:26px 28px;display:flex;flex-direction:column;">
+        <div style="font-size:14px;font-weight:800;margin-bottom:6px;">Старт</div>
+        <div style="font-size:30px;font-weight:800;letter-spacing:-0.8px;margin-bottom:16px;">0 ₽ <span style="font-size:13px;font-weight:600;color:#6A6F7A;">навсегда</span></div>
+        <div style="display:flex;flex-direction:column;gap:9px;font-size:13px;line-height:1.5;color:#2A2C33;margin-bottom:22px;">
+          <div>· Резюме с AI-ревью (RU)</div>
+          <div>· 10 вакансий с матчем в неделю</div>
+          <div>· Трекер откликов и письма</div>
+          <div>· 2 AI-тренировки в месяц</div>
+        </div>
+        <span onClick="{{ openSignup }}" style="margin-top:auto;display:flex;align-items:center;justify-content:center;height:42px;border-radius:9px;border:1px solid #D5D9E0;color:#17171E;font-size:14px;font-weight:700;cursor:pointer;" style-hover="background:#F4F5F7;">Начать</span>
+      </div>
+      <div style="background:#FFFFFF;border:2px solid #116EF5;border-radius:16px;padding:26px 28px;display:flex;flex-direction:column;position:relative;box-shadow:0 12px 32px rgba(17,110,245,.12);">
+        <span style="position:absolute;top:-11px;left:28px;padding:3px 11px;border-radius:99px;background:#116EF5;color:#FFFFFF;font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;">для активного поиска</span>
+        <div style="font-size:14px;font-weight:800;margin-bottom:6px;">Про</div>
+        <div style="font-size:30px;font-weight:800;letter-spacing:-0.8px;margin-bottom:16px;">990 ₽ <span style="font-size:13px;font-weight:600;color:#6A6F7A;">в месяц</span></div>
+        <div style="display:flex;flex-direction:column;gap:9px;font-size:13px;line-height:1.5;color:#2A2C33;margin-bottom:22px;">
+          <div>· Всё из «Старта», без лимитов</div>
+          <div>· Адаптация резюме под каждую вакансию</div>
+          <div>· EN-резюме и собесы на английском</div>
+          <div>· Все источники: Telegram, фриланс, LinkedIn</div>
+          <div>· Безлимитные AI-собесы + записи с разбором</div>
+        </div>
+        <span onClick="{{ openSignup }}" style="margin-top:auto;display:flex;align-items:center;justify-content:center;height:42px;border-radius:9px;background:#116EF5;color:#FFFFFF;font-size:14px;font-weight:700;cursor:pointer;" style-hover="background:#0B5CD6;">Попробовать 7 дней</span>
+      </div>
+      <div style="background:#17171E;border-radius:16px;padding:26px 28px;display:flex;flex-direction:column;color:#FFFFFF;">
+        <div style="font-size:14px;font-weight:800;margin-bottom:6px;">Студентам Хекслета</div>
+        <div style="font-size:30px;font-weight:800;letter-spacing:-0.8px;margin-bottom:16px;">0 ₽ <span style="font-size:13px;font-weight:600;color:#8B909E;">· «Про» на 6 месяцев</span></div>
+        <div style="display:flex;flex-direction:column;gap:9px;font-size:13px;line-height:1.5;color:#B9BECC;margin-bottom:22px;">
+          <div>· Полный «Про» для студентов и выпускников</div>
+          <div>· Активируется автоматически по аккаунту</div>
+          <div>· Коммерческие проекты — сразу в профиль</div>
+          <div>· Дальше — 490 ₽/мес со скидкой выпускника</div>
+        </div>
+        <span onClick="{{ openLogin }}" style="margin-top:auto;display:flex;align-items:center;justify-content:center;height:42px;border-radius:9px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#FFFFFF;font-size:14px;font-weight:700;cursor:pointer;" style-hover="background:rgba(255,255,255,.16);">Войти через Хекслет</span>
+      </div>
+    </div>
+    <div style="margin-top:14px;font-size:12px;color:#9AA0AB;">Цены прототипа — для обсуждения модели монетизации.</div>
+  </div>
+
+  <div id="hx-cta" style="max-width:1120px;margin:0 auto;padding:0 24px 72px 24px;">
+    <div style="background:#17171E;border-radius:20px;padding:52px 56px;display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:320px;">
+        <h2 style="margin:0 0 10px 0;font-size:28px;font-weight:800;letter-spacing:-0.6px;color:#FFFFFF;">Начните с резюме — это 5 минут</h2>
+        <p style="margin:0;font-size:14px;line-height:1.6;color:#9AA2B4;">Импортируйте профиль с hh.ru или соберите с нуля — AI-ревью сразу покажет, что чинить.</p>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <span onClick="{{ openSignup }}" style="display:flex;align-items:center;height:46px;padding:0 24px;border-radius:9px;background:#116EF5;color:#FFFFFF;font-size:15px;font-weight:700;cursor:pointer;" style-hover="background:#0B5CD6;">Начать бесплатно</span>
+        <a href="Хекслет Карьера.dc.html" style="text-decoration:none;display:flex;align-items:center;height:46px;padding:0 24px;border-radius:9px;border:1px solid rgba(255,255,255,.25);color:#FFFFFF;font-size:15px;font-weight:700;" style-hover="background:rgba(255,255,255,.08);">Смотреть демо</a>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+
+<sc-if value="{{ isNotfound }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="404" style="font-family:Manrope,system-ui,sans-serif;color:#17171E;min-height:62vh;display:flex;align-items:center;">
+  <div style="max-width:1120px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;width:100%;">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:#116EF5;margin-bottom:14px;">ошибка 404</div>
+      <h1 style="margin:0 0 14px 0;font-size:40px;line-height:1.15;font-weight:800;letter-spacing:-1px;">Такой страницы нет.<br>Зато есть вакансии</h1>
+      <p style="margin:0 0 26px 0;font-size:15px;line-height:1.6;color:#4A4F59;max-width:400px;">Страница переехала, удалена или в адресе опечатка. Бывает — вернитесь на главную или продолжите поиск работы с того места, где остановились.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <span onClick="{{ goHome }}" style="display:flex;align-items:center;height:44px;padding:0 22px;border-radius:9px;background:#116EF5;color:#FFFFFF;font-size:14.5px;font-weight:700;cursor:pointer;" style-hover="background:#0B5CD6;">На главную</span>
+        <a href="Хекслет Карьера.dc.html" style="text-decoration:none;display:flex;align-items:center;height:44px;padding:0 22px;border-radius:9px;border:1px solid #D5D9E0;color:#17171E;font-size:14.5px;font-weight:700;background:#FFFFFF;" style-hover="background:#F4F5F7;">Открыть приложение</a>
+      </div>
+      <div style="margin-top:22px;font-size:13px;color:#6A6F7A;">Если уверены, что страница должна быть здесь — напишите на <span style="color:#0B5CD6;font-weight:700;">careers@hexlet.io</span></div>
+    </div>
+    <div style="background:#17171E;border-radius:16px;padding:24px 26px;font-family:'JetBrains Mono',monospace;box-shadow:0 18px 44px rgba(23,23,30,.18);">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:16px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:#FF5F57;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#FEBC2E;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#28C840;"></span>
+        <span style="margin-left:8px;font-size:11px;color:#8B909E;">терминал</span>
+      </div>
+      <div style="font-size:13px;line-height:1.9;color:#E8EAF0;">
+        <div><span style="color:#69DB7C;">$</span> career open /stranica</div>
+        <div style="color:#FF8787;">Error 404: страница не найдена</div>
+        <div><span style="color:#69DB7C;">$</span> career suggest</div>
+        <div style="color:#8B909E;">→ 12 новых вакансий под ваш профиль</div>
+        <div style="color:#8B909E;">→ собеседование с Т-Банком завтра в 11:00</div>
+        <div style="color:#8B909E;">→ фоллоу-ап в Контур ждёт отправки</div>
+        <div><span style="color:#69DB7C;">$</span> <span style="display:inline-block;width:8px;height:15px;background:#E8EAF0;vertical-align:text-bottom;animation:hxBlink 1.1s steps(1) infinite;"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isLegal }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Правовая информация" style="font-family:Manrope,system-ui,sans-serif;color:#17171E;">
+  <div style="max-width:1120px;margin:0 auto;padding:48px 24px 72px 24px;">
+    <div style="max-width:640px;margin-bottom:36px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px;">
+        <span onClick="{{ goHome }}" style="font-size:12.5px;font-weight:700;color:#0B5CD6;cursor:pointer;">← На главную</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#6A6F7A;">Документы</span>
+      </div>
+      <h1 style="margin:0 0 10px 0;font-size:34px;font-weight:800;letter-spacing:-0.8px;">Правовая информация</h1>
+      <div style="font-size:13.5px;color:#6A6F7A;">Обновлено 1 июля 2026 года · действует для сервиса «Хекслет Карьера»</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:250px 1fr;gap:40px;align-items:start;">
+      <div style="position:sticky;top:86px;display:flex;flex-direction:column;gap:2px;">
+        <span style="padding:9px 13px;border-radius:8px;background:#EAF2FE;color:#0B5CD6;font-size:13px;font-weight:700;cursor:pointer;">1. Общие положения</span>
+        <span style="padding:9px 13px;border-radius:8px;color:#3E434D;font-size:13px;font-weight:600;cursor:pointer;" style-hover="background:#F4F5F7;">2. Персональные данные</span>
+        <span style="padding:9px 13px;border-radius:8px;color:#3E434D;font-size:13px;font-weight:600;cursor:pointer;" style-hover="background:#F4F5F7;">3. Работа AI-функций</span>
+        <span style="padding:9px 13px;border-radius:8px;color:#3E434D;font-size:13px;font-weight:600;cursor:pointer;" style-hover="background:#F4F5F7;">4. Подписка и оплата</span>
+        <span style="padding:9px 13px;border-radius:8px;color:#3E434D;font-size:13px;font-weight:600;cursor:pointer;" style-hover="background:#F4F5F7;">5. Ответственность</span>
+        <span style="padding:9px 13px;border-radius:8px;color:#3E434D;font-size:13px;font-weight:600;cursor:pointer;" style-hover="background:#F4F5F7;">Реквизиты</span>
+        <div style="margin-top:14px;padding:13px 15px;border-radius:10px;background:#F4F5F7;font-size:12px;line-height:1.55;color:#6A6F7A;">Скачать в PDF: <span style="color:#0B5CD6;font-weight:700;cursor:pointer;">соглашение</span> · <span style="color:#0B5CD6;font-weight:700;cursor:pointer;">политика данных</span></div>
+      </div>
+
+      <div style="max-width:680px;">
+        <div style="margin-bottom:34px;">
+          <h2 style="margin:0 0 12px 0;font-size:20px;font-weight:800;letter-spacing:-0.3px;">1. Общие положения</h2>
+          <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;color:#2A2C33;">Сервис «Хекслет Карьера» (далее — Сервис) помогает пользователям в поиске работы: хранит резюме и сопроводительные письма, агрегирует вакансии из открытых источников, ведёт учёт откликов и предоставляет тренировочные интервью с использованием технологий искусственного интеллекта.</p>
+          <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;color:#2A2C33;">Используя Сервис, вы соглашаетесь с настоящими условиями, а также с <span style="color:#0B5CD6;font-weight:600;">Пользовательским соглашением Хекслета</span>. Если вы не согласны с условиями — пожалуйста, прекратите использование Сервиса.</p>
+          <p style="margin:0;font-size:14px;line-height:1.7;color:#2A2C33;">Сервис предназначен для лиц старше 16 лет. Отдельные функции доступны только зарегистрированным пользователям платформы Хекслет.</p>
+        </div>
+
+        <div style="margin-bottom:34px;">
+          <h2 style="margin:0 0 12px 0;font-size:20px;font-weight:800;letter-spacing:-0.3px;">2. Персональные данные</h2>
+          <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;color:#2A2C33;">Мы обрабатываем данные, которые вы указываете в резюме и профиле (ФИО, контакты, опыт работы, образование), а также данные об использовании Сервиса. Обработка ведётся в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» и <span style="color:#0B5CD6;font-weight:600;">Политикой обработки персональных данных</span>.</p>
+          <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;color:#2A2C33;">Резюме и письма не передаются работодателям без вашего явного действия — отправка отклика всегда инициируется вами. Записи тренировочных интервью хранятся 30 дней и доступны только вам.</p>
+          <p style="margin:0;font-size:14px;line-height:1.7;color:#2A2C33;">Вы можете запросить выгрузку или удаление своих данных в любой момент — через настройки профиля или письмом на <span style="color:#0B5CD6;font-weight:600;">privacy@hexlet.io</span>.</p>
+        </div>
+
+        <div style="margin-bottom:34px;">
+          <h2 style="margin:0 0 12px 0;font-size:20px;font-weight:800;letter-spacing:-0.3px;">3. Работа AI-функций</h2>
+          <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;color:#2A2C33;">Ревью резюме, генерация писем и тренировочные интервью используют большие языковые модели. Их ответы носят рекомендательный характер и могут содержать неточности — итоговые решения о содержании резюме и откликов принимаете вы.</p>
+          <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;color:#2A2C33;">Проверка кода в тренировочных интервью выполняется автоматическими тестами в изолированной среде. Ваши решения не используются для обучения моделей без отдельного согласия.</p>
+          <p style="margin:0;padding:13px 16px;border-radius:10px;background:#FFF4E6;font-size:13.5px;line-height:1.65;color:#5C3A0A;"><b>Важно:</b> Сервис создан для тренировки. Использование AI-подсказок во время реальных собеседований может нарушать правила компаний-работодателей и привести к отзыву оффера — мы сознательно не предоставляем таких функций.</p>
+        </div>
+
+        <div style="margin-bottom:34px;">
+          <h2 style="margin:0 0 12px 0;font-size:20px;font-weight:800;letter-spacing:-0.3px;">4. Подписка и оплата</h2>
+          <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;color:#2A2C33;">Базовые функции Сервиса бесплатны. Расширенные возможности (безлимитные AI-тренировки, приоритетный разбор резюме) доступны по подписке; условия и стоимость указываются на странице тарифов на момент оплаты.</p>
+          <p style="margin:0;font-size:14px;line-height:1.7;color:#2A2C33;">Подписку можно отменить в любой момент — доступ сохранится до конца оплаченного периода. Возвраты выполняются по правилам <span style="color:#0B5CD6;font-weight:600;">Оферты Хекслета</span>.</p>
+        </div>
+
+        <div style="margin-bottom:34px;">
+          <h2 style="margin:0 0 12px 0;font-size:20px;font-weight:800;letter-spacing:-0.3px;">5. Ответственность</h2>
+          <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;color:#2A2C33;">Сервис агрегирует вакансии из открытых источников «как есть» и не является работодателем или кадровым агентством. Мы не гарантируем трудоустройство, ответ конкретного работодателя или точность данных в объявлениях третьих лиц.</p>
+          <p style="margin:0;font-size:14px;line-height:1.7;color:#2A2C33;">Товарные знаки компаний, упомянутых в вакансиях, принадлежат их правообладателям и используются исключительно для идентификации источника объявления.</p>
+        </div>
+
+        <div style="border:1px solid #E6E8EC;border-radius:12px;padding:20px 24px;background:#F4F5F7;">
+          <div style="font-size:13px;font-weight:800;margin-bottom:10px;">Реквизиты</div>
+          <div style="font-size:13px;line-height:1.8;color:#3E434D;">ООО «Хекслет» · официальные реквизиты — на <span style="color:#0B5CD6;font-weight:600;">hexlet.io/pages/about</span><br>По вопросам Сервиса: <span style="color:#0B5CD6;font-weight:600;">careers@hexlet.io</span> · по данным: <span style="color:#0B5CD6;font-weight:600;">privacy@hexlet.io</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Блог" style="font-family:Manrope,system-ui,sans-serif;color:#17171E;">
+  <div style="max-width:1120px;margin:0 auto;padding:48px 24px 72px 24px;">
+    <div style="max-width:560px;margin-bottom:32px;">
+      <h1 style="margin:0 0 10px 0;font-size:34px;font-weight:800;letter-spacing:-0.8px;">Блог о поиске работы</h1>
+      <div style="font-size:14px;color:#6A6F7A;line-height:1.6;">Данные из откликов выпускников, разборы собеседований и честные советы карьерного центра.</div>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;">
+      <span style="padding:6px 13px;border-radius:99px;background:#17171E;color:#FFFFFF;font-size:12.5px;font-weight:700;cursor:pointer;">Все</span>
+      <span style="padding:6px 13px;border-radius:99px;background:#FFFFFF;border:1px solid #D5D9E0;color:#3E434D;font-size:12.5px;font-weight:600;cursor:pointer;" style-hover="border-color:#9AA0AB;">Резюме</span>
+      <span style="padding:6px 13px;border-radius:99px;background:#FFFFFF;border:1px solid #D5D9E0;color:#3E434D;font-size:12.5px;font-weight:600;cursor:pointer;" style-hover="border-color:#9AA0AB;">Собеседования</span>
+      <span style="padding:6px 13px;border-radius:99px;background:#FFFFFF;border:1px solid #D5D9E0;color:#3E434D;font-size:12.5px;font-weight:600;cursor:pointer;" style-hover="border-color:#9AA0AB;">Оффер и зарплата</span>
+      <span style="padding:6px 13px;border-radius:99px;background:#FFFFFF;border:1px solid #D5D9E0;color:#3E434D;font-size:12.5px;font-weight:600;cursor:pointer;" style-hover="border-color:#9AA0AB;">Данные</span>
+    </div>
+
+    <div onClick="{{ goArticle }}" style="background:#17171E;border-radius:18px;padding:36px 40px;margin-bottom:14px;cursor:pointer;display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:center;">
+      <div>
+        <div style="display:flex;gap:8px;margin-bottom:14px;">
+          <span style="padding:3px 10px;border-radius:99px;background:rgba(17,110,245,.25);color:#7CA9F8;font-size:11px;font-weight:700;">Данные</span>
+          <span style="font-size:12px;color:#8B909E;">2 июля · 7 мин</span>
+        </div>
+        <div style="font-size:26px;font-weight:800;letter-spacing:-0.6px;line-height:1.25;color:#FFFFFF;margin-bottom:10px;">Сколько откликов нужно джуну до оффера: данные 1 200 выпускников</div>
+        <div style="font-size:13.5px;line-height:1.6;color:#9AA2B4;">Медиана — 60 откликов и 9 недель. Разобрали, что отличает тех, кто получает оффер быстрее: сопроводительные, скорость отклика и фоллоу-апы.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 18px;display:flex;justify-content:space-between;align-items:baseline;"><span style="font-size:12.5px;color:#9AA2B4;">Медиана до оффера</span><span style="font-size:20px;font-weight:800;color:#FFFFFF;">60 откликов</span></div>
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 18px;display:flex;justify-content:space-between;align-items:baseline;"><span style="font-size:12.5px;color:#9AA2B4;">С сопроводительным</span><span style="font-size:20px;font-weight:800;color:#69DB7C;">×2,3 ответа</span></div>
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 18px;display:flex;justify-content:space-between;align-items:baseline;"><span style="font-size:12.5px;color:#9AA2B4;">Отклик в день публикации</span><span style="font-size:20px;font-weight:800;color:#FFFFFF;">ответ за 1 день</span></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+      <div onClick="{{ goArticle }}" style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:24px 26px;cursor:pointer;" style-hover="border-color:#B9CFF7;">
+        <div style="display:flex;gap:8px;margin-bottom:12px;"><span style="padding:3px 10px;border-radius:99px;background:#EAF2FE;color:#0B5CD6;font-size:11px;font-weight:700;">Собеседования</span><span style="font-size:12px;color:#9AA0AB;">28 июня · 5 мин</span></div>
+        <div style="font-size:17px;font-weight:800;letter-spacing:-0.3px;line-height:1.3;margin-bottom:8px;">Скрининг с HR: 12 вопросов, которые будут почти наверняка</div>
+        <div style="font-size:13px;line-height:1.6;color:#4A4F59;">И почему «расскажите о себе» — это не приглашение пересказать резюме.</div>
+      </div>
+      <div onClick="{{ goArticle }}" style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:24px 26px;cursor:pointer;" style-hover="border-color:#B9CFF7;">
+        <div style="display:flex;gap:8px;margin-bottom:12px;"><span style="padding:3px 10px;border-radius:99px;background:#F3F0FF;color:#6741D9;font-size:11px;font-weight:700;">Резюме</span><span style="font-size:12px;color:#9AA0AB;">24 июня · 6 мин</span></div>
+        <div style="font-size:17px;font-weight:800;letter-spacing:-0.3px;line-height:1.3;margin-bottom:8px;">EN-резюме — это не перевод: 9 отличий от версии для hh</div>
+        <div style="font-size:13px;line-height:1.6;color:#4A4F59;">Одна страница, глаголы результата и никакого фото — чек-лист для международных площадок.</div>
+      </div>
+      <div onClick="{{ goArticle }}" style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:24px 26px;cursor:pointer;" style-hover="border-color:#B9CFF7;">
+        <div style="display:flex;gap:8px;margin-bottom:12px;"><span style="padding:3px 10px;border-radius:99px;background:#E9F8EE;color:#2B8A3E;font-size:11px;font-weight:700;">Оффер и зарплата</span><span style="font-size:12px;color:#9AA0AB;">19 июня · 8 мин</span></div>
+        <div style="font-size:17px;font-weight:800;letter-spacing:-0.3px;line-height:1.3;margin-bottom:8px;">Торг по офферу для джуна: можно и нужно</div>
+        <div style="font-size:13px;line-height:1.6;color:#4A4F59;">Скрипт встречного предложения и три ошибки, из-за которых оффер отзывают.</div>
+      </div>
+      <div onClick="{{ goArticle }}" style="background:#FFFFFF;border:1px solid #E6E8EC;border-radius:14px;padding:24px 26px;cursor:pointer;" style-hover="border-color:#B9CFF7;">
+        <div style="display:flex;gap:8px;margin-bottom:12px;"><span style="padding:3px 10px;border-radius:99px;background:#EAF2FE;color:#0B5CD6;font-size:11px;font-weight:700;">Собеседования</span><span style="font-size:12px;color:#9AA0AB;">14 июня · 6 мин</span></div>
+        <div style="font-size:17px;font-weight:800;letter-spacing:-0.3px;line-height:1.3;margin-bottom:8px;">STAR без воды: как рассказывать о пет-проектах</div>
+        <div style="font-size:13px;line-height:1.6;color:#4A4F59;">Формула «ситуация → действие → цифра» на примерах реальных ответов выпускников.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isArticle }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Статья" style="font-family:Manrope,system-ui,sans-serif;color:#17171E;">
+  <div style="max-width:760px;margin:0 auto;padding:48px 24px 72px 24px;">
+    <span onClick="{{ goBlog }}" style="font-size:12.5px;font-weight:700;color:#0B5CD6;cursor:pointer;">← Все статьи</span>
+    <div style="display:flex;gap:8px;margin:18px 0 14px 0;align-items:center;">
+      <span style="padding:3px 10px;border-radius:99px;background:#EAF2FE;color:#0B5CD6;font-size:11px;font-weight:700;">Данные</span>
+      <span style="font-size:12.5px;color:#9AA0AB;">2 июля 2026 · 7 мин чтения</span>
+    </div>
+    <h1 style="margin:0 0 14px 0;font-size:34px;line-height:1.2;font-weight:800;letter-spacing:-0.8px;">Сколько откликов нужно джуну до оффера: данные 1 200 выпускников</h1>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+      <div style="width:34px;height:34px;border-radius:50%;background:#116EF5;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;">КЦ</div>
+      <div style="font-size:12.5px;color:#6A6F7A;"><b style="color:#2A2C33;">Карьерный центр Хекслета</b> · анонимизированные данные трекера откликов</div>
+    </div>
+    <p style="margin:0 0 16px 0;font-size:15.5px;line-height:1.75;color:#2A2C33;">«Я отправил тридцать откликов, и все молчат — со мной что-то не так?» Нет. Мы посмотрели на 1 200 поисков выпускников за последний год: медианный путь до первого оффера — <b>60 откликов и 9 недель</b>. Молчание — это статистика, а не приговор.</p>
+    <p style="margin:0 0 16px 0;font-size:15.5px;line-height:1.75;color:#2A2C33;">Но разброс огромный: кто-то получает оффер за 20 откликов, кто-то — за 150. Разница почти никогда не в «таланте». Вот три фактора, которые видно в данных.</p>
+    <h2 style="margin:28px 0 10px 0;font-size:21px;font-weight:800;letter-spacing:-0.3px;">1. Сопроводительное — самый дешёвый буст</h2>
+    <p style="margin:0 0 16px 0;font-size:15.5px;line-height:1.75;color:#2A2C33;">Отклики с письмом, где упомянуты конкретные требования вакансии, получают ответ в 2,3 раза чаще. Генерик-письма («хочу развиваться в вашей компании») не работают вовсе — их конверсия неотличима от откликов без письма.</p>
+    <h2 style="margin:28px 0 10px 0;font-size:21px;font-weight:800;letter-spacing:-0.3px;">2. Скорость решает</h2>
+    <p style="margin:0 0 16px 0;font-size:15.5px;line-height:1.75;color:#2A2C33;">Отклик в день публикации вакансии — медианный ответ за 1 день. Отклик через неделю — за 6 дней, и конверсия падает вдвое: рекрутёр уже собрал воронку.</p>
+    <h2 style="margin:28px 0 10px 0;font-size:21px;font-weight:800;letter-spacing:-0.3px;">3. Фоллоу-ап возвращает «мёртвые» отклики</h2>
+    <p style="margin:0 0 16px 0;font-size:15.5px;line-height:1.75;color:#2A2C33;">Каждый седьмой ответ в наших данных пришёл после вежливого напоминания на 5–7 день тишины. Люди просто заняты — напоминание работает, если оно короткое и без обиды.</p>
+    <div style="border-left:3px solid #116EF5;background:#F4F5F7;border-radius:0 10px 10px 0;padding:16px 20px;margin:22px 0;font-size:14.5px;line-height:1.7;color:#2A2C33;">Вывод: до оффера доходят не те, кто пишет идеальные отклики, а те, кто держит темп 10–15 осмысленных откликов в неделю и не бросает после первых отказов.</div>
+    <div style="background:#17171E;border-radius:14px;padding:24px 28px;margin-top:32px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:260px;">
+        <div style="font-size:16px;font-weight:800;color:#FFFFFF;margin-bottom:4px;">Держите темп с трекером</div>
+        <div style="font-size:13px;line-height:1.55;color:#9AA2B4;">Норма откликов, напоминания о фоллоу-апах и письма — в одном месте.</div>
+      </div>
+      <span onClick="{{ openSignup }}" style="display:flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;background:#116EF5;color:#FFFFFF;font-size:14px;font-weight:700;cursor:pointer;" style-hover="background:#0B5CD6;">Начать бесплатно</span>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<div style="background:#17171E;font-family:Manrope,system-ui,sans-serif;">
+  <div style="max-width:1120px;margin:0 auto;padding:52px 24px 0 24px;">
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:40px;">
+      <div>
+        <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:10px;margin-bottom:14px;cursor:pointer;">
+          <div style="width:32px;height:32px;border-radius:8px;background:#116EF5;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:#FFFFFF;letter-spacing:-1px;">&gt;_</div>
+          <div style="display:flex;flex-direction:column;">
+            <span style="font-size:14.5px;font-weight:800;color:#FFFFFF;letter-spacing:-0.2px;line-height:1.1;">Хекслет</span>
+            <span style="font-size:9px;font-weight:700;color:#7CA9F8;letter-spacing:1.4px;text-transform:uppercase;line-height:1.2;">Карьера</span>
+          </div>
+        </div>
+        <div style="font-size:12.5px;line-height:1.6;color:#8B909E;max-width:240px;margin-bottom:16px;">Сервис Хекслета для поиска работы в IT: от первого резюме до подписанного оффера.</div>
+        <div style="display:flex;gap:9px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="background:rgba(255,255,255,.14);"><svg width="15" height="15" viewBox="0 0 24 24" fill="#B9BECC"><path d="M21.9 4.6c.2-1-.5-1.5-1.4-1.2L2.8 10.2c-1 .4-1 1.1-.2 1.4l4.5 1.4 10.4-6.6c.5-.3 1-.1.6.2l-8.4 7.6-.3 4.6c.5 0 .7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8z"></path></svg></div>
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="background:rgba(255,255,255,.14);"><svg width="15" height="15" viewBox="0 0 24 24" fill="#B9BECC"><path d="M13 18.7c-5.7 0-9-3.9-9.1-10.4h2.9c.1 4.8 2.2 6.8 3.9 7.2V8.3h2.7v4.1c1.6-.2 3.4-2.1 4-4.1h2.7a7.9 7.9 0 0 1-3.6 5.1 8.2 8.2 0 0 1 4.3 5.3h-3c-.6-1.9-2.2-3.4-4.4-3.6v3.6z"></path></svg></div>
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="background:rgba(255,255,255,.14);"><svg width="15" height="15" viewBox="0 0 24 24" fill="#B9BECC"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15.2V8.8l5.2 3.2z"></path></svg></div>
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="background:rgba(255,255,255,.14);"><svg width="15" height="15" viewBox="0 0 24 24" fill="#B9BECC"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .3.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"></path></svg></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#5F6472;margin-bottom:14px;">Продукт</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <a href="Хекслет Карьера.dc.html" style="text-decoration:none;font-size:13px;font-weight:600;color:#B9BECC;" style-hover="color:#FFFFFF;">Вакансии и матчинг</a>
+          <a href="Хекслет Карьера.dc.html" style="text-decoration:none;font-size:13px;font-weight:600;color:#B9BECC;" style-hover="color:#FFFFFF;">Резюме с AI-ревью</a>
+          <a href="Хекслет Карьера.dc.html" style="text-decoration:none;font-size:13px;font-weight:600;color:#B9BECC;" style-hover="color:#FFFFFF;">Трекер откликов</a>
+          <a href="Хекслет Карьера.dc.html" style="text-decoration:none;font-size:13px;font-weight:600;color:#B9BECC;" style-hover="color:#FFFFFF;">AI-собеседования</a>
+          <span style="font-size:13px;font-weight:600;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">Тарифы</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#5F6472;margin-bottom:14px;">Хекслет</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <span style="font-size:13px;font-weight:600;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">Курсы и профессии</span>
+          <span onClick="{{ goCommercial }}" style="font-size:13px;font-weight:600;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">Коммерческие проекты</span>
+          <span style="font-size:13px;font-weight:600;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">Сообщество</span>
+          <span onClick="{{ goBlog }}" style="font-size:13px;font-weight:600;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">Блог</span>
+          <span style="font-size:13px;font-weight:600;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">База вопросов с собеседований</span>
+          <span style="font-size:13px;font-weight:600;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">Помощь</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#5F6472;margin-bottom:14px;">Документы</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <span onClick="{{ goLegal }}" style="font-size:13px;font-weight:600;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">Правовая информация</span>
+          <span onClick="{{ goLegal }}" style="font-size:13px;font-weight:600;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">Персональные данные</span>
+          <span onClick="{{ goLegal }}" style="font-size:13px;font-weight:600;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">Оферта</span>
+          <span style="font-size:13px;font-weight:600;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">careers@hexlet.io</span>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.09);padding:18px 0 22px 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <span style="font-size:12px;color:#8B909E;">© 2012–2026 Хекслет · Программирование — это просто</span>
+      <span style="flex:1;"></span>
+      <span style="font-size:12px;font-weight:700;color:#B9BECC;cursor:pointer;" style-hover="color:#FFFFFF;">Русский</span>
+      <span style="font-size:12px;color:#5F6472;">·</span>
+      <span style="font-size:12px;font-weight:600;color:#8B909E;cursor:pointer;" style-hover="color:#FFFFFF;">English</span>
+    </div>
+  </div>
+</div>
+
+<sc-if value="{{ showSwitcher }}" hint-placeholder-val="{{ true }}">
+<div style="position:fixed;right:18px;bottom:18px;z-index:40;background:#17171E;border-radius:99px;padding:5px;display:flex;align-items:center;gap:2px;box-shadow:0 8px 28px rgba(23,23,30,.35);font-family:Manrope,system-ui,sans-serif;">
+  <span style="font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#5F6472;padding:0 8px 0 11px;">прототип</span>
+  <span onClick="{{ goHome }}" style="padding:7px 13px;border-radius:99px;font-size:12px;font-weight:700;cursor:pointer;background:{{ swbHome }};color:{{ swcHome }};">Главная</span>
+  <span onClick="{{ goNotfound }}" style="padding:7px 13px;border-radius:99px;font-size:12px;font-weight:700;cursor:pointer;background:{{ swbNotfound }};color:{{ swcNotfound }};">404</span>
+  <span onClick="{{ goLegal }}" style="padding:7px 13px;border-radius:99px;font-size:12px;font-weight:700;cursor:pointer;background:{{ swbLegal }};color:{{ swcLegal }};">Правовая</span>
+  <span onClick="{{ goBlog }}" style="padding:7px 13px;border-radius:99px;font-size:12px;font-weight:700;cursor:pointer;background:{{ swbBlog }};color:{{ swcBlog }};">Блог</span>
+  <a href="Хекслет Карьера - Админка.dc.html" style="text-decoration:none;padding:7px 13px;border-radius:99px;font-size:12px;font-weight:700;color:#B9BECC;" style-hover="color:#FFFFFF;">Админка ↗</a>
+</div>
+</sc-if>
+
+<sc-if value="{{ authOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:60;font-family:Manrope,system-ui,sans-serif;">
+  <div onClick="{{ closeAuth }}" style="position:absolute;inset:0;background:rgba(23,23,30,.5);"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;max-width:calc(100vw - 32px);max-height:88vh;overflow-y:auto;background:#FFFFFF;border-radius:16px;box-shadow:0 24px 64px rgba(23,23,30,.3);padding:28px 30px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+      <div style="width:32px;height:32px;border-radius:8px;background:#116EF5;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:#FFFFFF;letter-spacing:-1px;">&gt;_</div>
+      <span style="flex:1;"></span>
+      <span onClick="{{ closeAuth }}" style="width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#6A6F7A;" style-hover="background:#F4F5F7;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span>
+    </div>
+
+    <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div style="font-size:21px;font-weight:800;letter-spacing:-0.4px;margin-bottom:4px;">С возвращением</div>
+        <div style="font-size:13px;color:#6A6F7A;margin-bottom:20px;">Войдите, чтобы продолжить поиск</div>
+        <a href="Хекслет Карьера.dc.html" style="text-decoration:none;display:flex;align-items:center;justify-content:center;gap:9px;height:42px;border-radius:9px;background:#17171E;color:#FFFFFF;font-size:13.5px;font-weight:700;margin-bottom:10px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .3.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"></path></svg>Войти через GitHub</a>
+        <a href="Хекслет Карьера.dc.html" style="text-decoration:none;display:flex;align-items:center;justify-content:center;height:42px;border-radius:9px;border:1px solid #D5D9E0;color:#17171E;font-size:13.5px;font-weight:700;margin-bottom:16px;" style-hover="background:#F4F5F7;">Войти через аккаунт Хекслета</a>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><div style="flex:1;height:1px;background:#E6E8EC;"></div><span style="font-size:11.5px;color:#9AA0AB;">или по почте</span><div style="flex:1;height:1px;background:#E6E8EC;"></div></div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:5px;">Email</div>
+        <div style="height:40px;border:1px solid #D5D9E0;border-radius:8px;display:flex;align-items:center;padding:0 13px;font-size:13.5px;color:#9AA0AB;margin-bottom:12px;">akrylov@ya.ru</div>
+        <div style="display:flex;align-items:baseline;margin-bottom:5px;"><span style="font-size:12px;font-weight:700;flex:1;">Пароль</span><span onClick="{{ openReset }}" style="font-size:12px;font-weight:700;color:#0B5CD6;cursor:pointer;">Забыли пароль?</span></div>
+        <div style="height:40px;border:1px solid #D5D9E0;border-radius:8px;display:flex;align-items:center;padding:0 13px;font-size:13.5px;color:#9AA0AB;margin-bottom:16px;">••••••••</div>
+        <a href="Хекслет Карьера.dc.html" style="text-decoration:none;display:flex;align-items:center;justify-content:center;height:44px;border-radius:9px;background:#116EF5;color:#FFFFFF;font-size:14.5px;font-weight:700;margin-bottom:14px;" style-hover="background:#0B5CD6;">Войти</a>
+        <div style="font-size:13px;color:#6A6F7A;text-align:center;">Нет аккаунта? <span onClick="{{ openSignup }}" style="color:#0B5CD6;font-weight:700;cursor:pointer;">Зарегистрироваться</span></div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSignup }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="font-size:21px;font-weight:800;letter-spacing:-0.4px;margin-bottom:4px;">Создать аккаунт</div>
+        <div style="font-size:13px;color:#6A6F7A;margin-bottom:20px;">Бесплатно · первое AI-ревью резюме за 5 минут</div>
+        <a href="Хекслет Карьера.dc.html" style="text-decoration:none;display:flex;align-items:center;justify-content:center;gap:9px;height:42px;border-radius:9px;background:#17171E;color:#FFFFFF;font-size:13.5px;font-weight:700;margin-bottom:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .3.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"></path></svg>Продолжить с GitHub</a>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><div style="flex:1;height:1px;background:#E6E8EC;"></div><span style="font-size:11.5px;color:#9AA0AB;">или по почте</span><div style="flex:1;height:1px;background:#E6E8EC;"></div></div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:5px;">Имя</div>
+        <div style="height:40px;border:1px solid #D5D9E0;border-radius:8px;display:flex;align-items:center;padding:0 13px;font-size:13.5px;color:#9AA0AB;margin-bottom:12px;">Артём</div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:5px;">Email</div>
+        <div style="height:40px;border:1px solid #D5D9E0;border-radius:8px;display:flex;align-items:center;padding:0 13px;font-size:13.5px;color:#9AA0AB;margin-bottom:12px;">akrylov@ya.ru</div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:5px;">Пароль</div>
+        <div style="height:40px;border:1px solid #D5D9E0;border-radius:8px;display:flex;align-items:center;padding:0 13px;font-size:13.5px;color:#9AA0AB;margin-bottom:14px;">минимум 8 символов</div>
+        <div style="display:flex;gap:9px;align-items:flex-start;margin-bottom:16px;">
+          <div style="width:16px;height:16px;border-radius:4px;background:#116EF5;display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+          <span style="font-size:12px;line-height:1.5;color:#6A6F7A;">Согласен с <span onClick="{{ legalFromAuth }}" style="color:#0B5CD6;font-weight:700;cursor:pointer;">условиями сервиса</span> и обработкой персональных данных</span>
+        </div>
+        <a href="Хекслет Карьера.dc.html" style="text-decoration:none;display:flex;align-items:center;justify-content:center;height:44px;border-radius:9px;background:#116EF5;color:#FFFFFF;font-size:14.5px;font-weight:700;margin-bottom:14px;" style-hover="background:#0B5CD6;">Создать аккаунт</a>
+        <div style="font-size:13px;color:#6A6F7A;text-align:center;">Уже есть аккаунт? <span onClick="{{ openLogin }}" style="color:#0B5CD6;font-weight:700;cursor:pointer;">Войти</span></div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isReset }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="font-size:21px;font-weight:800;letter-spacing:-0.4px;margin-bottom:4px;">Сброс пароля</div>
+        <div style="font-size:13px;color:#6A6F7A;line-height:1.55;margin-bottom:20px;">Укажите почту аккаунта — пришлём ссылку для создания нового пароля. Ссылка действует 24 часа.</div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:5px;">Email</div>
+        <div style="height:40px;border:1px solid #D5D9E0;border-radius:8px;display:flex;align-items:center;padding:0 13px;font-size:13.5px;color:#9AA0AB;margin-bottom:16px;">akrylov@ya.ru</div>
+        <span onClick="{{ closeAuth }}" style="display:flex;align-items:center;justify-content:center;height:44px;border-radius:9px;background:#116EF5;color:#FFFFFF;font-size:14.5px;font-weight:700;cursor:pointer;margin-bottom:14px;" style-hover="background:#0B5CD6;">Отправить ссылку</span>
+        <div style="font-size:13px;color:#6A6F7A;text-align:center;">Вспомнили пароль? <span onClick="{{ openLogin }}" style="color:#0B5CD6;font-weight:700;cursor:pointer;">Войти</span></div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;showPromo&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Сайт&quot;, &quot;description&quot;: &quot;Промо-полоса над шапкой&quot;},
+  &quot;showSwitcher&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Прототип&quot;, &quot;description&quot;: &quot;Переключатель страниц (только для прототипа)&quot;}
+}">
+class Component extends DCLogic {
+  state = { page: 'home', authModal: null };
+
+  componentDidMount() {
+    const h = (location.hash || '').toLowerCase();
+    if (h.indexOf('legal') >= 0) this.setState({ page: 'legal' });
+    else if (h.indexOf('article') >= 0) this.setState({ page: 'article' });
+    else if (h.indexOf('blog') >= 0) this.setState({ page: 'blog' });
+    else if (h.indexOf('404') >= 0 || h.indexOf('notfound') >= 0) this.setState({ page: 'notfound' });
+  }
+
+  renderVals() {
+    const S = this.state, P = this.props;
+    const vals = {};
+    const pages = { home: 'Home', notfound: 'Notfound', legal: 'Legal', blog: 'Blog', article: 'Article' };
+    for (const k of Object.keys(pages)) {
+      const cap = pages[k];
+      const active = S.page === k;
+      vals['is' + cap] = active;
+      vals['go' + cap] = () => {
+        this.setState({ page: k });
+        try { history.replaceState(null, '', '#' + ({ home: 'home', notfound: '404', legal: 'legal', blog: 'blog', article: 'article' })[k]); } catch (e) {}
+        window.scrollTo(0, 0);
+      };
+      vals['swb' + cap] = active ? '#116EF5' : 'transparent';
+      vals['swc' + cap] = active ? '#FFFFFF' : '#B9BECC';
+    }
+    const scrollToId = (id) => {
+      const crossPage = this.state.page !== 'home';
+      const attempt = (triesLeft) => {
+        const el = document.getElementById(id);
+        if (el) {
+          window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 76, behavior: crossPage ? 'auto' : 'smooth' });
+          return;
+        }
+        if (triesLeft > 0) setTimeout(() => attempt(triesLeft - 1), 120);
+      };
+      if (crossPage) {
+        this.setState({ page: 'home' }, () => setTimeout(() => attempt(10), 60));
+      } else {
+        attempt(1);
+      }
+    };
+    vals.goFeatures = () => scrollToId('hx-features');
+    vals.goHow = () => scrollToId('hx-how');
+    vals.goPricing = () => scrollToId('hx-pricing');
+    vals.goCommercial = () => scrollToId('hx-commercial');
+
+    const am = S.authModal;
+    vals.authOpen = !!am;
+    vals.isLogin = am === 'login';
+    vals.isSignup = am === 'signup';
+    vals.isReset = am === 'reset';
+    vals.openLogin = () => this.setState({ authModal: 'login' });
+    vals.openSignup = () => this.setState({ authModal: 'signup' });
+    vals.openReset = () => this.setState({ authModal: 'reset' });
+    vals.closeAuth = () => this.setState({ authModal: null });
+    vals.legalFromAuth = () => { this.setState({ authModal: null, page: 'legal' }); window.scrollTo(0, 0); };
+    vals.showPromo = P.showPromo ?? true;
+    vals.showSwitcher = P.showSwitcher ?? true;
+    return vals;
+  }
+}
+</script>
+</body>
+</html>
